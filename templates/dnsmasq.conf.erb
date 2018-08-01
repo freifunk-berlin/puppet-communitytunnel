@@ -1,0 +1,11 @@
+# This is the configuration file for the Freifunk Berlin
+# community tunnel using tunneldigger.
+
+# Do not listen on the outside interface and tun devices
+except-interface=<%= @interface %>
+except-interface=tun-udp
+except-interface=tun-tcp
+dhcp-range=<%= @dhcp-range %>
+dhco-opton=6
+dhcp-lease-max=<%= @dhcp-lease-max %>
+
