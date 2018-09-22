@@ -19,12 +19,19 @@ class communitytunnel(
     templates_dir       => 'communitytunnel',
     session_up          => 'setup_interface.sh',
     session_mtu_changed => 'mtu_changed.sh',
-    upstart             => '1',
+    systemd             => '1',
   }
 
+  package { [
+    'dnsmasq'
+  ]:
+    ensure => present,
+  }
+
+
   # Configure and enable dnsmasq
-  $dhcp-range = '172.31.224.100-172.31.239.254,255.255.240.0,1h'
-  $dhcp-lease-max = $max_tunnels
+  $dhcp_range = '172.31.224.100,172.31.239.254,255.255.240.0,1h'
+  $dhcp_lease_max = $max_tunnels
   
   file { '/etc/dnsmasq.conf':
     ensure     => file,
