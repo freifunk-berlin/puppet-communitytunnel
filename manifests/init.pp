@@ -17,6 +17,7 @@ class communitytunnel(
     max_tunnels         => $max_tunnels,
     bridge_address      => '172.31.224.1/20',
     templates_dir       => 'communitytunnel',
+    functions           => 'functions.sh',
     session_up          => 'setup_interface.sh',
     session_mtu_changed => 'mtu_changed.sh',
     systemd             => '1',
